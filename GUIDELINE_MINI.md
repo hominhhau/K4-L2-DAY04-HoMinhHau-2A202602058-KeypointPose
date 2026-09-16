@@ -14,14 +14,14 @@
 
 ## 2. Luật của nhóm bạn (phải điền)
 
-| Tình huống | Luật nhóm bạn chọn | Vì sao |
-| --- | --- | --- |
-| Hông của người mặc quần áo dài | Chọn `v = 1` (Occluded), đặt chấm ước lượng tại vị trí giải phẫu hông/đỉnh xương chậu | Hông bị lớp vải che khuất nhưng vẫn nằm hoàn toàn trong khung ảnh; ước lượng theo đường nối vai-gối để không làm mất điểm OKS. |
-| Tai bị tóc hoặc mũ bảo hiểm che một phần | Chọn `v = 1` (Occluded), đặt chấm theo tọa độ giải phẫu ước lượng của tai | Tai nằm dưới tóc hoặc mũ bảo hiểm nhưng phần đầu vẫn ở trong khung hình; không chọn `v = 0` vì chi tiết không nằm ngoài ranh giới mép ảnh. |
-| Người bị cắt ở mép ảnh (chỉ thấy từ hông trở lên) | Chọn `v = 0` (Outside) cho các khớp nằm ngoài mép ảnh (gối, mắt cá), **không** đặt chấm | Các khớp chi dưới đã trượt hoàn toàn ra khỏi mép ảnh, không còn pixel nào hiển thị trong khung hình. |
-| Cổ tay nằm sau tay lái / sau thân mình | Chọn `v = 1` (Occluded), đặt chấm ước lượng tại vị trí cổ tay sau tay lái/thân mình | Cổ tay bị che bởi vật thể (tay lái xe máy/thùng hàng/thân người) nhưng vị trí tay vẫn thuộc phạm vi bên trong bức ảnh. |
-| Hai người chồng lên nhau | Gán đủ skeleton 17 điểm cho cả 2 người; các khớp bị người trước che chọn `v = 1` | Đảm bảo không bỏ sót skeleton người đứng sau; các khớp bị che lấp được chấm ước lượng theo trục cơ thể thực tế của nhân vật đó. |
-| Người nhỏ đến mức nào thì không gán nữa | Chỉ gán người có diện tích người rõ nét (đường kính cơ thể > 20px hoặc nhìn rõ hình thể); không gán người quá nhỏ mờ ở hậu cảnh xa | Tránh gây nhiễu dữ liệu gán nhãn cho mô hình khi các khớp không thể xác định nổi tọa độ giải phẫu. |
+| Tình huống | Luật nhóm bạn chọn | Vì sao | Ảnh mẫu |
+| --- | --- | --- | --- |
+| Hông của người mặc quần áo dài | Chọn `v = 1` (Occluded), đặt chấm ước lượng tại vị trí giải phẫu hông/đỉnh xương chậu | Hông bị lớp vải che khuất nhưng vẫn nằm hoàn toàn trong khung ảnh; ước lượng theo đường nối vai-gối để không làm mất điểm OKS. | ![Hông mặc quần áo dài](reports/screenshort/anh1.png) |
+| Tai bị tóc hoặc mũ bảo hiểm che một phần | Chọn `v = 1` (Occluded), đặt chấm theo tọa độ giải phẫu ước lượng của tai | Tai nằm dưới tóc hoặc mũ bảo hiểm nhưng phần đầu vẫn ở trong khung hình; không chọn `v = 0` vì chi tiết không nằm ngoài ranh giới mép ảnh. | ![Tai bị mũ che](reports/screenshort/anh2.png) |
+| Người bị cắt ở mép ảnh (chỉ thấy từ hông trở lên) | Chọn `v = 0` (Outside) cho các khớp nằm ngoài mép ảnh (gối, mắt cá), **không** đặt chấm | Các khớp chi dưới đã trượt hoàn toàn ra khỏi mép ảnh, không còn pixel nào hiển thị trong khung hình. | ![Người bị cắt mép ảnh](reports/screenshort/anh3.png) |
+| Cổ tay nằm sau tay lái / sau thân mình | Chọn `v = 1` (Occluded), đặt chấm ước lượng tại vị trí cổ tay sau tay lái/thân mình | Cổ tay bị che bởi vật thể (tay lái xe máy/thùng hàng/thân người) nhưng vị trí tay vẫn thuộc phạm vi bên trong bức ảnh. | ![Cổ tay sau tay lái](reports/screenshort/anh4.png) |
+| Hai người chồng lên nhau | Gán đủ skeleton 17 điểm cho cả 2 người; các khớp bị người trước che chọn `v = 1` | Đảm bảo không bỏ sót skeleton người đứng sau; các khớp bị che lấp được chấm ước lượng theo trục cơ thể thực tế của nhân vật đó. | ![Hai người chồng lên nhau](reports/screenshort/anh5.png) |
+| Người nhỏ đến mức nào thì không gán nữa | Chỉ gán người có diện tích người rõ nét (đường kính cơ thể > 20px hoặc nhìn rõ hình thể); không gán người quá nhỏ mờ ở hậu cảnh xa | Tránh gây nhiễu dữ liệu gán nhãn cho mô hình khi các khớp không thể xác định nổi tọa độ giải phẫu. | ![Người nhỏ ở hậu cảnh](reports/screenshort/anh6.png) |
 
 Với mỗi luật, chèn **một ảnh mẫu** (screenshot từ CVAT) thay vì chỉ viết một câu.
 Slide 12 nói rõ: khớp không có bề mặt nhìn thấy được thì phải có ảnh mẫu, không phải
